@@ -236,3 +236,17 @@ header {
     box-sizing: border-box; /* تضمن أن الحشوة لا تؤثر على الأبعاد */
     transition: max-height 0.5s ease, opacity 0.5s ease; /* تأثير سلس عند الفتح والإغلاق */
 }
+
+
+.top-right-text {
+    position: fixed; /* تثبيت العنصر في مكانه حتى عند التمرير */
+    top: 10px; /* المسافة من الأعلى */
+    right: 10px; /* المسافة من اليمين */
+    font-size: 16px; /* حجم النص */
+    color: #fff; /* لون النص */
+    background-color: rgba(0, 0, 0, 0.7); /* خلفية شفافة لتوضيح النص */
+    padding: 5px 10px; /* مسافة داخلية */
+    border-radius: 5px; /* حواف مستديرة */
+    z-index: 1000; /* لجعل العنصر يظهر فوق جميع العناصر الأخرى */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل للنص */
+}
