@@ -1,29 +1,238 @@
+/* إعدادات الصفحة العامة */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #001f3f, #005082); /* خلفية بألوان المحيط */
+    color: #fff;
+    overflow: hidden; /* تعطيل التمرير افتراضيًا */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh; /* ضبط الصفحة على كامل الشاشة */
 }
 
+/* ترويسة الموقع */
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0;
     text-align: center;
-}
-
-#content {
     padding: 20px;
+    background-color: #87CEFA; /* أزرق فاتح */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+/* حاوية المحتوى */
+main {
+    margin-top: 150px; /* المسافة بين الهيدر والمحتوى */
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* تصميم الأكورديون */
+.accordion-item {
+    background-color: #005082;
+    color: #fff;
     border: none;
+    padding: 15px;
     cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
-button:hover {
-    background-color: #45a049;
+.accordion-item:hover {
+    background-color: #0096c7;
+}
+
+/* محتوى الأكورديون */
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0 15px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+/* عرض النص عند الفتح */
+.content.show {
+    max-height: 500px;
+    opacity: 1;
+    padding: 15px;
+}
+
+/* الفقاعات */
+.bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background: rgba(173, 216, 230, 0.6);
+    border-radius: 50%;
+    animation: rise 5s infinite ease-in;
+}
+
+.bubble:nth-child(2) {
+    left: 20%;
+    animation-duration: 6s;
+    width: 25px;
+    height: 25px;
+}
+
+.bubble:nth-child(3) {
+    left: 40%;
+    animation-duration: 4s;
+    width: 15px;
+    height: 15px;
+}
+
+.bubble:nth-child(4) {
+    left: 60%;
+    animation-duration: 7s;
+    width: 30px;
+    height: 30px;
+}
+
+.bubble:nth-child(5) {
+    left: 80%;
+    animation-duration: 5s;
+    width: 10px;
+    height: 10px;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(100%);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* الفوتر */
+footer {
+    margin-top: auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+header {
+    /* المحاذاة والإعدادات السابقة */
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    /* ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ */
+
+    /* إضافة خلفية متدرجة جذّابة */
+    background: linear-gradient(135deg, #87CEFA, #1E90FF); 
+    /* يمكنك اختيار تدرج مختلف بالألوان التي تفضلها */
+
+    /* جعل الحواف السفلية دائرية */
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    /* إضافة ظلّ أسفل العنوان لإبرازه */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-20px, 30px);
+    }
+    50% {
+        transform: translate(30px, -20px);
+    }
+    75% {
+        transform: translate(-30px, -30px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.emoji {
+    position: absolute;
+    animation: float 8s infinite ease-in-out;
+    user-select: none;
+    pointer-events: none;
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.content.show {
+    overflow: visible;
+}
+
+.logo-container {
+    position: fixed;
+    bottom: 20px; /* المسافة من الأسفل */
+    right: 20px; /* المسافة من اليمين */
+    z-index: 1000; /* لضمان ظهور الشعار فوق كل العناصر الأخرى */
+    background: rgba(255, 255, 255, 0.8); /* خلفية شفافة للشعار */
+    border-radius: 10px; /* حواف مستديرة */
+    padding: 5px; /* مسافة داخلية */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل خفيف لإبراز الشعار */
+}
+
+.logo-container img {
+    width: 80px; /* ضبط حجم الشعار */
+    height: auto; /* للحفاظ على الأبعاد النسبية */
+    display: block;
+}
+
+.logo-container:hover {
+    transform: scale(1.1); /* تكبير بسيط عند التمرير */
+    transition: transform 0.3s ease; /* تأثير سلس */
+}
+.accordion .content {
+    text-align: right; /* محاذاة النصوص إلى اليمين */
+    direction: rtl; /* اتجاه النص من اليمين إلى اليسار */
+    padding: 10px 15px; /* مسافة داخلية لتحسين المظهر */
+    margin: 0; /* إزالة أي مسافات غير مرغوب فيها */
+    box-sizing: border-box; /* تضمن أن الحشوة لا تؤثر على الأبعاد */
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* تأثير سلس عند الفتح والإغلاق */
 }
